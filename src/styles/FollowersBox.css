@@ -1,0 +1,14 @@
+.followers-block {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+}
+
+.followers-block * {
+  margin: 0 !important;
+}
+/*# sourceMappingURL=FollowersBox.css.map */

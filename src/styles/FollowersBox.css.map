@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAA;EACZ,OAAO,EAAE,eAAe;EACxB,cAAc,EAAE,cAAc;CAIjC;;AAND,AAGI,gBAHY,CAGZ,CAAC,CAAA;EACG,MAAM,EAAE,YAAY;CACvB",
+    "sources": [
+        "FollowersBox.scss"
+    ],
+    "names": [],
+    "file": "FollowersBox.css"
+}
