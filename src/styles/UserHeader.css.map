@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAA;EACd,gBAAgB,EAAE,wHAAwH;EAC1I,UAAU,EAAE,GAAG;CAQlB;;AAVD,AAGC,kBAHiB,CAGjB,CAAC,CAAA;EACG,OAAO,EAAE,eAAe;EACxB,cAAc,EAAE,MAAM;CACzB;;AANF,AAOC,kBAPiB,CAOjB,GAAG,CAAA;EACC,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "UserHeader.scss"
+    ],
+    "names": [],
+    "file": "UserHeader.css"
+}

@@ -1,0 +1,19 @@
+.userheader-header {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/849/553/original/modern-gold-background-free-vector.jpg");
+  min-height: 8em;
+}
+
+.userheader-header * {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.userheader-header img {
+  padding-top: 4em;
+}
+/*# sourceMappingURL=UserHeader.css.map */
