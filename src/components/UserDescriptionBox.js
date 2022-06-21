@@ -1,16 +1,44 @@
-import React from 'react'
-import {Icon} from "semantic-ui-react"
+import React from 'react';
+import {Icon} from "semantic-ui-react";
+import {useSelector} from "react-redux" ;
+import { Dimmer, Loader,  Segment } from 'semantic-ui-react'
+
+
 
 const UserDescriptionBox = () => {
-    return (
-        <div class="ui sizer vertical segment">
-        <div class="ui tiny header">Short description</div>
-        <Icon name="location arrow" />Location <br/>
-        <Icon name="shopping bag" />Occupation<br/>
-        <Icon name="calendar outline" />Registration date<br/>
-        
+    const currentUserData = useSelector(state => state.authReducer.currentUserData);
+    
+    const renderLoading = () => {
+        return(
+        //     <Dimmer active>
+        //     <Loader />
+        //   </Dimmer>
+        "Loading"
+        )
+    }
+    const renderInfo =() => {
+    
+        return(
+            <div className="ui sizer vertical segment">
+        <div className="ui tiny header">{currentUserData.userDescription}</div>
+        <Icon name="location arrow" />{currentUserData.location} <br/>
+        <Icon name="shopping bag" />{currentUserData.occupation}<br/>
+        <Icon name="calendar outline" />Registered {currentUserData.registrationDate}<br/>
         <p></p>
-        </div>
+        </div> 
+        )
+    }
+
+    const renderUserInfo = () =>{
+            return currentUserData ? renderInfo()
+                : renderLoading()
+    }
+
+    return (
+            <>
+            
+            {renderUserInfo()}
+            </>
     )
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import {useEffect,useState} from "react";
-import {signIn, signOut} from '../actions'
+import {signIn, signOut,fetchTweet} from '../actions'
 import {useSelector} from "react-redux" ;
 import { useDispatch } from "react-redux";
 import "../styles/GoogleAuth.scss";
 
 const GoogleAuth = () => {
-    const signedInStatus = useSelector(state => state.authReducer.isSignedIn)
-    console.log(`signedInStatus`, signedInStatus);
+    const signedInStatus = useSelector(state => state.authReducer.isSignedIn);
+    const currentUserData = useSelector(state => state.authReducer.currentUserData);
+    console.log(`USE EFFECT signedInStatus`, signedInStatus);
     const dispatch = useDispatch();
     const [auth, setAuth] = useState()
     useEffect(() => {
@@ -18,10 +19,11 @@ const GoogleAuth = () => {
                 scope: "email"
             }).then(    ()  => {
                 let auth = window.gapi.auth2.getAuthInstance();
-                // console.log(`auth`, auth);
+              
                 setAuth(auth)
                 onAuthChange(auth.isSignedIn.get())
-                auth.isSignedIn.listen(onAuthChange)
+                 auth.isSignedIn.listen(onAuthChange)
+                 
             })
         });
         return () => {
@@ -34,6 +36,8 @@ const GoogleAuth = () => {
         if(signedInStatus){
             console.log("signed in");
             dispatch(signIn(window.gapi.auth2.getAuthInstance().currentUser.get().getId()))
+            
+            dispatch(fetchTweet());
         }else {
             console.log("sign out");
             dispatch(signOut())
@@ -42,7 +46,7 @@ const GoogleAuth = () => {
     }
     const renderAuthButton = () =>{
         console.log(`signInStatus in renderAuthButton`, signedInStatus);
-        console.log(`signInStatus in renderAuthButton`, signedInStatus == true);
+       
         if(signedInStatus == "none"  ){
             return(
                 <div className="ui active inline loader"></div>           
@@ -70,7 +74,7 @@ const GoogleAuth = () => {
     
     return (
         <div className="googleauth-container">
-            {renderAuthButton()}
+            {renderAuthButton(signedInStatus)}
         </div>
     )
 }

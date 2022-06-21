@@ -1,0 +1,21 @@
+.tweet{
+    display: flex;
+    flex-direction: row;
+    .tweet-header{
+        display: flex;
+        flex-direction: row;
+        .ui.tiny.header{
+            margin-top: 0;
+        }
+    }
+    .tweet-content{
+        display: flex;
+    flex-direction: column;
+    width:100%;
+    }
+    .tweet-functionality{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
