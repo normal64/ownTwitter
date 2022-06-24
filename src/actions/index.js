@@ -16,9 +16,20 @@ export const signOut = () =>{
     }
 }
 export const editLiked =    (userId,tweetId) => async(dispatch,getState)   =>{
+    console.log(`tweetId`, tweetId);
     await dispatch({
         type: "EDIT_LIKED",
         payload: tweetId
+    })
+    const currentUserData = getState().authReducer.currentUserData;
+    console.log(`currentUserData editLiked action reducer`,userId, currentUserData);
+    const response =    await tweets.patch(`/users/id${userId}`,currentUserData )
+}
+export const newTweet = (userId,tweet) => async(dispatch,getState) =>{
+    console.log("new tweet action creator",tweet);
+    dispatch({
+        type:"NEW_TWEET",
+        payload: tweet.tweet
     })
     const currentUserData = getState().authReducer.currentUserData;
     console.log(`currentUserData editLiked action reducer`,userId, currentUserData);

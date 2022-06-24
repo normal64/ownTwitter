@@ -4,7 +4,9 @@ import GoogleAuth from "../src/components/GoogleAuth";
 import UserHeader from "./components/UserHeader";
 import UserDescriptionBox from "../src/components/UserDescriptionBox";
 import Followers from "./components/Followers";
-import Tweets from "./components/Tweets"
+import Tweets from "./components/Tweets";
+import NewTweet from "./components/NewTweet"
+
 const App = () => {
     return (
         <div className="ui container">
@@ -13,6 +15,7 @@ const App = () => {
             <UserHeader />
             <UserDescriptionBox />
             <Followers />
+            <NewTweet />
             <Tweets />
 
         </div>

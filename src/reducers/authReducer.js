@@ -22,16 +22,36 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUserData: action.payload
             }
+        case  "NEW_TWEET":
+            return{
+                ...state,
+                currentUserData: {
+                    ...state.currentUserData,
+                    tweets: [...state.currentUserData.tweets,
+                        {
+                            id: 98,
+                            "content": action.payload ,
+                            "comments": 0,
+                            "retweet": 0,
+                            "likes": 0,
+                            "liked":false
+                        }
+                            
+
+                    ]
+                }
+
+            }
         case "EDIT_LIKED":
-            console.log("edit liked reducer reached");
-            console.log(state.currentUserData.tweets[action.payload - 1]);
+            console.log("edit liked reducer reached", action.payload);
             return {
                 ...state,
                 currentUserData: {
                     ...state.currentUserData,
                     tweets: [...state.currentUserData.tweets.map((tweet, index) => {
                         console.log(`index ,tweet`, index, tweet);
-                        if (index == action.payload - 1) {
+                        if (tweet.id == action.payload) {
+                            console.log(`MATCH tweet`, tweet);
                             return {
                                 ...tweet,
                                  "likes": tweet.liked  ? tweet.likes - 1 : tweet.likes + 1 ,

@@ -7,6 +7,7 @@ import {createStore, applyMiddleware, compose} from "redux";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
 
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
