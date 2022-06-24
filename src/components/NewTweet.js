@@ -40,6 +40,7 @@ const NewTweet = (props) => {
     const onSubmit = (formValues) =>{
         console.log("on submit happens",formValues,props);
         dispatch(newTweet(userId,formValues))
+        formValues.tweet = ""
         // props.onSubmit(formValues)
     }
     return (

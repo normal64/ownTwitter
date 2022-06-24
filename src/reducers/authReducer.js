@@ -27,18 +27,18 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUserData: {
                     ...state.currentUserData,
-                    tweets: [...state.currentUserData.tweets,
+                    tweets: [
                         {
-                            id: 98,
+                            "id": state.currentUserData.tweets[0].id + 1,
                             "content": action.payload ,
                             "comments": 0,
                             "retweet": 0,
                             "likes": 0,
                             "liked":false
-                        }
-                            
-
+                        },
+                        ...state.currentUserData.tweets
                     ]
+                    
                 }
 
             }
@@ -54,7 +54,7 @@ export default (state = INITIAL_STATE, action) => {
                             console.log(`MATCH tweet`, tweet);
                             return {
                                 ...tweet,
-                                 "likes": tweet.liked  ? tweet.likes - 1 : tweet.likes + 1 ,
+                                "likes": tweet.liked  ? tweet.likes - 1 : tweet.likes + 1 ,
                                 "liked": !tweet.liked
                             }
                         } else return tweet
