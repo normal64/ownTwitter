@@ -33,6 +33,7 @@ export default (state = INITIAL_STATE, action) => {
                             "content": action.payload ,
                             "comments": 0,
                             "retweet": 0,
+                            "timeDate": new Date().toJSON().replace(/T/, ' ').replace(/\..+/, ''),
                             "likes": 0,
                             "liked":false
                         },
