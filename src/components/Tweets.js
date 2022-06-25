@@ -59,9 +59,9 @@ const Tweets = () => {
               </div>
               <div className="tweet-content">
                 <div className="tweet-header">
-                  <Header size="small">{currentUserData.username}</Header>
-                  <Header size="tiny">{currentUserData.userurl}</Header>
-                  <Header size="tiny">{tweet.timeDate}</Header>
+                  <Header size="small">{currentUserData.username} </Header>
+                  <Header size="tiny">{currentUserData.userurl} </Header>
+                  <Header size="tiny"> {tweet.timeDate}</Header>
                 </div>
                 <div className="tweet-body">
                   <p>{tweet.content}</p>
