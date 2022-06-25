@@ -1,6 +1,7 @@
 .tweet{
     display: flex;
     flex-direction: row;
+    min-height: 13em;
     .tweet-header{
         display: flex;
         flex-direction: row;
@@ -21,4 +22,16 @@
     .icon:hover{
         cursor: pointer;
     }
+    .share-socials{
+        flex-direction: column;
+    display: flex;
+    align-items: end;
+    }
+    .socials{
+        position: absolute !important;
+        margin-top: 2em !important;
+    }
+}
+.hide{
+    display: none !important;
 }
