@@ -28,6 +28,7 @@ import {
       const currentUserData = useSelector(
         (state) => state.authReducer.currentUserData
       );
+      const userId = useSelector((state) => state.authReducer.userId);
       
       const tweet = currentUserData.tweets.filter( tweet => tweet.id == currentTweetId)[0];
       console.log(`currentUserData in single tweet`, tweet);
@@ -67,7 +68,7 @@ import {
             </div>
             <div 
             onClick={(e) =>
-              handleLikeClick(e, dispatch, currentUserData.userId, tweet.id)
+              handleLikeClick(e, dispatch, userId, tweet.id)
             }
             >
               <Icon
