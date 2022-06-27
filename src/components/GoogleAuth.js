@@ -36,7 +36,11 @@ const GoogleAuth = () => {
         if(signedInStatus){
             console.log("signed in");
             dispatch(signIn(window.gapi.auth2.getAuthInstance().currentUser.get().getId()))
-            
+            window.history.replaceState(
+                null,
+                "New Page Title",
+                currentUserData ? currentUserData.userurl : ""
+              )
             dispatch(fetchTweet());
         }else {
             console.log("sign out");
