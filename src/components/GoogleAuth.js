@@ -20,10 +20,14 @@ const GoogleAuth = () => {
             }).then(    ()  => {
                 let auth = window.gapi.auth2.getAuthInstance();
               
-                setAuth(auth)
-                onAuthChange(auth.isSignedIn.get())
-                 auth.isSignedIn.listen(onAuthChange)
-                 
+                setAuth(auth);
+                onAuthChange(auth.isSignedIn.get());
+                 auth.isSignedIn.listen(onAuthChange);
+                 window.history.replaceState(
+                    null,
+                    "New Page Title",
+                    currentUserData ? currentUserData.userurl : ""
+                  )
             })
         });
         return () => {
@@ -34,7 +38,7 @@ const GoogleAuth = () => {
         console.log("auth change signin status", signedInStatus);
         console.log(`window.gapi.auth2.getAuthInstance().currentUser.get`, window.gapi.auth2.getAuthInstance().currentUser.get());
         if(signedInStatus){
-            console.log("signed in");
+            console.log("signed in",);
             dispatch(signIn(window.gapi.auth2.getAuthInstance().currentUser.get().getId()))
             window.history.replaceState(
                 null,

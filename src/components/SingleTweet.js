@@ -47,12 +47,8 @@ import {
           <div className="tweet-header">
             <Header size="small">{currentUserData.username} </Header>
             <Header size="tiny">{currentUserData.userurl} </Header>
-            <Header size="tiny">
-              <Link to={`/${currentUserData.userurl}/${tweet.id}`} onClick={ () => props.getMe(tweet.id)}>
-                {tweet.timeDate}
-              </Link>
+            <Header size="tiny">{tweet.timeDate} </Header>
             
-            </Header>
           </div>
           <div className="tweet-body">
             <p>{tweet.content}</p>
