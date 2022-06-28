@@ -39,6 +39,14 @@ import {
       }
       const renderTweet = () =>{
         return tweet ? 
+        <div>
+          <div className="return-button">
+          <Link to={`/${currentUserData.userurl}`} >
+          <Icon disabled size="big" name='arrow left' />Back to profile
+                  </Link>
+          </div>
+                    
+        
         <div className="tweet" key={tweet.content + tweet.timeDate}>
         <div className="user-icon">
           <Image size="tiny" circular src={currentUserData.avatarURL} />
@@ -121,6 +129,7 @@ import {
           </div>
   
         </div>
+      </div>
       </div>
       :
       "Loading..."
