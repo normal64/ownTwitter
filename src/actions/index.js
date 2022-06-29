@@ -35,8 +35,14 @@ export const newTweet = (userId,tweet) => async(dispatch,getState) =>{
     console.log(`currentUserData editLiked action reducer`,userId, currentUserData);
     const response =    await tweets.patch(`/users/id${userId}`,currentUserData )
 }
-export const deleteTweet = (id) => async(dispatch) =>{
-    console.log(`deleteTweet action creator`);
+export const deleteTweet = (userID,id) => async(dispatch,getState) =>{
+    console.log(`deleteTweet action creator ID:`,id);
+    dispatch({
+        type:"DELETE_TWEET",
+        payload: id
+    });
+    const currentUserData = getState().authReducer.currentUserData;
+const response =    await tweets.patch(`/users/id${userID}`,currentUserData )
 }
 export const fetchTweet = () => async (dispatch) =>{
     console.log("fetch tweet");
@@ -45,7 +51,6 @@ export const fetchTweet = () => async (dispatch) =>{
     
     dispatch({
         type:"FETCH_TWEET",
-        
         payload: filteredUserData[0]
     })
 

@@ -39,9 +39,7 @@ export default (state = INITIAL_STATE, action) => {
                         },
                         ...state.currentUserData.tweets
                     ]
-                    
                 }
-
             }
         case "EDIT_LIKED":
             console.log("edit liked reducer reached", action.payload);
@@ -60,10 +58,26 @@ export default (state = INITIAL_STATE, action) => {
                             }
                         } else return tweet
                     })
-
                     ]
                 }
             }
+        case "DELETE_TWEET":
+            console.log("delete tweet reducer reached", action.payload);
+            return {
+                ...state,
+                currentUserData: {
+                    ...state.currentUserData,
+                    tweets: [...state.currentUserData.tweets.filter((tweet, index) => {
+                        console.log(`index ,tweet`, index, tweet);
+                        if (tweet.id !== action.payload) {
+                            console.log(`MATCH tweet`, tweet);
+                            return tweet
+                        } 
+                    })
+                    ]
+                }
+            }
+
         default:
             return state
     }

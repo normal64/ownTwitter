@@ -21,8 +21,8 @@ const handleLikeClick = (e, dispatch, userId, tweetId) => {
     dispatch(editLiked(userId, tweetId));
   }
 };
-const handleDeleteClick = (e,id,dispatch) => {
-  dispatch(deleteTweet(id));
+const handleDeleteClick = (e,userId,id,dispatch) => {
+  dispatch(deleteTweet(userId,id));
 }
 
 const Tweets = (props) => {
@@ -72,7 +72,7 @@ const Tweets = (props) => {
         <Dropdown.Item>Free option</Dropdown.Item>
         <Dropdown.Divider />
         
-        <Dropdown.Item onClick={ (e) => handleDeleteClick(e,"id",dispatch)}>Delete</Dropdown.Item>
+        <Dropdown.Item onClick={ (e) => handleDeleteClick(e,userId,tweet.id,dispatch)}>Delete</Dropdown.Item>
         
       </Dropdown.Menu>
     </Dropdown>
