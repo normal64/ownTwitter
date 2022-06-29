@@ -1,7 +1,8 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
 import "../styles/FollowersBox.scss";
 import {useSelector} from "react-redux" ;
+import { Icon,Dimmer, Loader,  Segment } from 'semantic-ui-react'
+
 
         
 
@@ -14,7 +15,7 @@ const Followers = () => {
             <Segment compact> {currentUserData.followers} Followers</Segment>
             </div>
             :
-            "Loading..."
+            <Icon loading name='spinner' />
             )
     }
     return (

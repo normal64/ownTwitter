@@ -10,10 +10,8 @@ const UserDescriptionBox = () => {
     
     const renderLoading = () => {
         return(
-        //     <Dimmer active>
-        //     <Loader />
-        //   </Dimmer>
-        "Loading"
+        
+<Icon loading name='spinner' />
         )
     }
     const renderInfo =() => {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Header, Image, Icon } from "semantic-ui-react";
+import { Header, Image, Icon,Dropdown, Menu  } from "semantic-ui-react";
 import "../styles/Tweets.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchTweet, editLiked } from "../actions";
+import { fetchTweet, editLiked,deleteTweet } from "../actions";
 import { Segment } from "semantic-ui-react";
 import { Link, Route, Routes } from 'react-router-dom'
 import {
@@ -14,12 +14,16 @@ import {
 } from "react-share";
 import { FacebookIcon, TwitterIcon, RedditIcon, VKIcon } from "react-share";
 
+
 const handleLikeClick = (e, dispatch, userId, tweetId) => {
   if (e.target.classList.contains("like")) {
     console.log("like clicked id and userId", tweetId, userId);
     dispatch(editLiked(userId, tweetId));
   }
 };
+const handleDeleteClick = (e,id,dispatch) => {
+  dispatch(deleteTweet(id));
+}
 
 const Tweets = (props) => {
   console.log(`TWEETS props`, props);
@@ -53,15 +57,26 @@ const Tweets = (props) => {
               <Image size="tiny" circular src={currentUserData.avatarURL} />
             </div>
             <div className="tweet-content">
-              <div className="tweet-header">
+              <div className="tweet-header-container">
+                <div className="tweet-header">
                 <Header size="small">{currentUserData.username} </Header>
                 <Header size="tiny">{currentUserData.userurl} </Header>
                 <Header size="tiny">
                   <Link to={`/${currentUserData.userurl}/${tweet.id}`} onClick={ () => props.getMe(tweet.id)}>
                     {tweet.timeDate}
                   </Link>
-                
                 </Header>
+                </div>
+                <Dropdown text='...' pointing className='link item'>
+      <Dropdown.Menu>
+        <Dropdown.Item>Free option</Dropdown.Item>
+        <Dropdown.Divider />
+        
+        <Dropdown.Item onClick={ (e) => handleDeleteClick(e,"id",dispatch)}>Delete</Dropdown.Item>
+        
+      </Dropdown.Menu>
+    </Dropdown>
+               
               </div>
               <div className="tweet-body">
                 <p>{tweet.content}</p>
@@ -137,7 +152,8 @@ const Tweets = (props) => {
           </div>
         );
       })
-      : "Loading";
+      : 
+      <Icon loading name='spinner' />
   };
   return <div>{renderTweet()}</div>;
 };

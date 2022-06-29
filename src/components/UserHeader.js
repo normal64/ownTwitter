@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Image, Button } from 'semantic-ui-react';
 import "../styles/UserHeader.scss"
 import {useSelector} from "react-redux" ;
-import { Dimmer, Loader,  Segment } from 'semantic-ui-react'
+import { Icon,Dimmer, Loader,  Segment } from 'semantic-ui-react'
 
 
 const UserHeader = () => {
@@ -10,10 +10,7 @@ const UserHeader = () => {
      
     const renderLoading = () => {
         return(
-        //     <Dimmer active>
-        //     <Loader />
-        //   </Dimmer>
-        "loading.."
+            <Icon loading name='spinner' />
         )
     }
     return (

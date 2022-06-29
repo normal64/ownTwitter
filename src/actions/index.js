@@ -34,7 +34,9 @@ export const newTweet = (userId,tweet) => async(dispatch,getState) =>{
     const currentUserData = getState().authReducer.currentUserData;
     console.log(`currentUserData editLiked action reducer`,userId, currentUserData);
     const response =    await tweets.patch(`/users/id${userId}`,currentUserData )
-
+}
+export const deleteTweet = (id) => async(dispatch) =>{
+    console.log(`deleteTweet action creator`);
 }
 export const fetchTweet = () => async (dispatch) =>{
     console.log("fetch tweet");
