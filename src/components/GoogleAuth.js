@@ -45,7 +45,8 @@ const GoogleAuth = () => {
                 "New Page Title",
                 currentUserData ? currentUserData.userurl : ""
               )
-            dispatch(fetchTweet());
+             
+            dispatch(fetchTweet(window.gapi.auth2.getAuthInstance().currentUser.get().getId()));
         }else {
             console.log("sign out");
             dispatch(signOut())

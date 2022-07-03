@@ -44,10 +44,10 @@ export const deleteTweet = (userID,id) => async(dispatch,getState) =>{
     const currentUserData = getState().authReducer.currentUserData;
 const response =    await tweets.patch(`/users/id${userID}`,currentUserData )
 }
-export const fetchTweet = () => async (dispatch) =>{
+export const fetchTweet = (userId) => async (dispatch) =>{
     console.log("fetch tweet");
     const response = await tweets.get("/users");
-    const filteredUserData = response.data.filter(elem => elem.userId == "100859294323853150805");
+    const filteredUserData = response.data.filter(elem => elem.userId == userId);
     
     dispatch({
         type:"FETCH_TWEET",

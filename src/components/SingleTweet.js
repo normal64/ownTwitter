@@ -20,6 +20,8 @@ import {
       dispatch(editLiked(userId, tweetId));
     }
   };
+  //code revision required in order to access any tweet by direct URL input
+  //separete base with tweets and change id 
   
     
     const SingleTweet = (props) =>{
@@ -29,7 +31,7 @@ import {
       const reg  = /^\/[^\/]*\//g;
       let adrWithoutId =  Url.match(reg)[0];
       let idFromUrl = Url.replace(adrWithoutId,'');
-     
+
       const [currentUserData, setCurrentUserData] = useState();
       const currentTweetId = props.getMe;
       const currentUserDataTemp = useSelector(
@@ -37,6 +39,9 @@ import {
       );
       const userId = useSelector((state) => state.authReducer.userId);
       let renderId = () => currentTweetId ? currentTweetId : idFromUrl;
+      let fullAdress = window.location.href;
+      console.log(`fullAdress`, fullAdress);
+
 
       const tweet = () =>currentUserData? currentUserData.tweets.filter( tweet => tweet.id == renderId() )[0] : "";
       useEffect(() => {
@@ -100,7 +105,7 @@ import {
               >
                 <Segment>
                   <FacebookShareButton
-                    url={"https://github.com/normal64/ownTwitter"}
+                    url={fullAdress}
                     quote={""}
                     hashtag={"#hashtag"}
                     description={"facebook"}
@@ -111,7 +116,7 @@ import {
                 </Segment>
                 <Segment>
                   <RedditShareButton
-                    url={"https://github.com/normal64/ownTwitter"}
+                    url={fullAdress}
                     quote={""}
                     hashtag={"#hashtag"}
                     description={"facebook"}
@@ -122,7 +127,7 @@ import {
                 </Segment>
                 <Segment>
                   <VKShareButton
-                    url={"https://github.com/normal64/ownTwitter"}
+                    url={fullAdress}
                     quote={""}
                     hashtag={"#hashtag"}
                     description={"facebook"}

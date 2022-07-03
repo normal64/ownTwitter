@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchTweet, editLiked,deleteTweet } from "../actions";
 import { Segment } from "semantic-ui-react";
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -31,6 +31,10 @@ const Tweets = (props) => {
     (state) => state.authReducer.currentUserData
   );
   const userId = useSelector((state) => state.authReducer.userId);
+  let location = useLocation();
+  console.log(`location`, location);
+  let fullAdress = window.location.href;
+  console.log(`fullAdress`, fullAdress);
 
   const dispatch = useDispatch();
   const openShare = (e) => {
@@ -48,6 +52,7 @@ const Tweets = (props) => {
     //     currentUserData.userurl
     //   )
     //   : console.log("url");
+    
     return currentUserData
       ? currentUserData.tweets.map((tweet) => {
         return (
@@ -108,7 +113,7 @@ const Tweets = (props) => {
                   >
                     <Segment>
                       <FacebookShareButton
-                        url={"https://github.com/normal64/ownTwitter"}
+                        url={`${fullAdress}/${tweet.id}`}
                         quote={""}
                         hashtag={"#hashtag"}
                         description={"facebook"}
@@ -119,7 +124,7 @@ const Tweets = (props) => {
                     </Segment>
                     <Segment>
                       <RedditShareButton
-                        url={"https://github.com/normal64/ownTwitter"}
+                        url={`${fullAdress}/${tweet.id}`}
                         quote={""}
                         hashtag={"#hashtag"}
                         description={"facebook"}
@@ -130,7 +135,7 @@ const Tweets = (props) => {
                     </Segment>
                     <Segment>
                       <VKShareButton
-                        url={"https://github.com/normal64/ownTwitter"}
+                        url={`${fullAdress}/${tweet.id}`}
                         quote={""}
                         hashtag={"#hashtag"}
                         description={"facebook"}
