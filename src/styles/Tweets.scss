@@ -10,15 +10,17 @@
     .tweet-header{
         display: flex;
         flex-direction: row;
-        *{
-            margin-left: 0.5em !important;
+        .tiny{
+            margin-left: 0.5em;
         }
+        
         .ui.tiny.header{
             margin-top: 0;
         }
     }
     .tweet-content{
         display: flex;
+        margin-left: 1em ;
     flex-direction: column;
     width:100%;
     }

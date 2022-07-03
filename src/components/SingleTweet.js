@@ -4,12 +4,13 @@ import {
     RedditShareButton,
     VKShareButton,
   } from "react-share";
+  import {useEffect, useState} from "react"
   import { FacebookIcon, TwitterIcon, RedditIcon, VKIcon } from "react-share";
   import { useDispatch } from "react-redux";
   import { Segment } from "semantic-ui-react";
   import { useSelector } from "react-redux";
   import { Header, Image, Icon } from "semantic-ui-react";
-  import { Link } from 'react-router-dom';
+  import { Link, useLocation } from 'react-router-dom';
   
   import { fetchTweet, editLiked } from "../actions";
   const handleLikeClick = (e, dispatch, userId, tweetId) => {
@@ -22,66 +23,75 @@ import {
   
     
     const SingleTweet = (props) =>{
-      console.log(`props in example`, props);
+      let location = useLocation();
       const dispatch = useDispatch();
+      let Url =location.pathname;
+      const reg  = /^\/[^\/]*\//g;
+      let adrWithoutId =  Url.match(reg)[0];
+      let idFromUrl = Url.replace(adrWithoutId,'');
+     
+      const [currentUserData, setCurrentUserData] = useState();
       const currentTweetId = props.getMe;
-      const currentUserData = useSelector(
-        (state) => state.authReducer.currentUserData
+      const currentUserDataTemp = useSelector(
+        (state) =>  state.authReducer.currentUserData
       );
       const userId = useSelector((state) => state.authReducer.userId);
-      
-      const tweet = currentUserData.tweets.filter( tweet => tweet.id == currentTweetId)[0];
-      console.log(`currentUserData in single tweet`, tweet);
+      let renderId = () => currentTweetId ? currentTweetId : idFromUrl;
+
+      const tweet = () =>currentUserData? currentUserData.tweets.filter( tweet => tweet.id == renderId() )[0] : "";
+      useEffect(() => {
+        setCurrentUserData(currentUserDataTemp)  
+        renderTweet()
+      }, [idFromUrl,Url,location,currentUserDataTemp,currentUserData])
       const openShare = (e) => {
         if (e.target.nextElementSibling.classList.contains("hide")) {
           e.target.nextElementSibling.classList.remove("hide")
         } else e.target.nextElementSibling.classList.add("hide")
       }
       const renderTweet = () =>{
-        return tweet ? 
+        return tweet() ? 
         <div>
           <div className="return-button">
-          <Link to={`/${currentUserData.userurl}`} >
+          <Link to={`/${currentUserData ? currentUserData.userurl : 'loading..'}`} >
           <Icon disabled size="big" name='arrow left' />Back to profile
                   </Link>
           </div>
-                    
-        
+
         <div className="tweet" key={tweet.content + tweet.timeDate}>
         <div className="user-icon">
-          <Image size="tiny" circular src={currentUserData.avatarURL} />
+          <Image size="tiny" circular src={currentUserData ? currentUserData.avatarURL : "loading.."} />
         </div>
         <div className="tweet-content">
           <div className="tweet-header">
-            <Header size="small">{currentUserData.username} </Header>
-            <Header size="tiny">{currentUserData.userurl} </Header>
-            <Header size="tiny">{tweet.timeDate} </Header>
+            <Header size="small">{currentUserData ? currentUserData.username : "loading.."} </Header>
+            <Header size="tiny">{currentUserData ? currentUserData.userurl : "loading.."} </Header>
+            <Header size="tiny">{tweet().timeDate} </Header>
             
           </div>
           <div className="tweet-body">
-            <p>{tweet.content}</p>
+            <p>{tweet().content}</p>
           </div>
           <div className="tweet-functionality">
             <div>
               <Icon disabled name="comment outline" size="large" />
-              {tweet.comments}
+              {tweet().comments}
             </div>
             <div>
               <Icon disabled name="retweet" size="large" />
-              {tweet.retweet}
+              {tweet().retweet}
             </div>
             <div 
             onClick={(e) =>
-              handleLikeClick(e, dispatch, userId, tweet.id)
+              handleLikeClick(e, dispatch, userId, tweet().id)
             }
             >
               <Icon
                 disabled
                 name="like"
-                color={tweet.liked ? "red" : "grey"}
+                color={tweet().liked ? "red" : "grey"}
                 size="large"
               />
-              {tweet.likes}
+              {tweet().likes}
             </div>
             <div className="share-socials" onClick={(e) => openShare(e)}>
               <Icon disabled name="share square" size="large" />

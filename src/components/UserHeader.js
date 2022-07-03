@@ -7,7 +7,6 @@ import { Icon,Dimmer, Loader,  Segment } from 'semantic-ui-react'
 
 const UserHeader = () => {
     const currentUserData = useSelector(state => state.authReducer.currentUserData);
-     
     const renderLoading = () => {
         return(
             <Icon loading name='spinner' />
@@ -20,14 +19,13 @@ const UserHeader = () => {
                 <Button color="black" floated="right"  className="subscribe-button">Subscribe</Button>
                 <Header size='small'>{currentUserData? currentUserData.username 
                 :  renderLoading()
-                 }
+                }
                 </Header>
                 <Header size='tiny'>@{currentUserData? currentUserData.userurl 
                 : renderLoading()
-                 }
-                 </Header>
+                }
+                </Header>
             </Header>
-            
         </div>
     )
 }

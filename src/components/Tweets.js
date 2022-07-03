@@ -17,7 +17,6 @@ import { FacebookIcon, TwitterIcon, RedditIcon, VKIcon } from "react-share";
 
 const handleLikeClick = (e, dispatch, userId, tweetId) => {
   if (e.target.classList.contains("like")) {
-    console.log("like clicked id and userId", tweetId, userId);
     dispatch(editLiked(userId, tweetId));
   }
 };
@@ -76,7 +75,6 @@ const Tweets = (props) => {
         
       </Dropdown.Menu>
     </Dropdown>
-               
               </div>
               <div className="tweet-body">
                 <p>{tweet.content}</p>

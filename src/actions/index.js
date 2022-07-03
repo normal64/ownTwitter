@@ -16,7 +16,7 @@ export const signOut = () =>{
     }
 }
 export const editLiked =    (userId,tweetId) => async(dispatch,getState)   =>{
-    console.log(`tweetId userId`, tweetId, userId);
+    console.log(`action creator tweetId userId`, tweetId, userId);
     await dispatch({
         type: "EDIT_LIKED",
         payload: tweetId

@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
                 isSignedIn: false
             }
         case "FETCH_TWEET":
-            console.log(`action.payload`, action.payload);
+            
             return {
                 ...state,
                 currentUserData: action.payload
@@ -42,13 +42,13 @@ export default (state = INITIAL_STATE, action) => {
                 }
             }
         case "EDIT_LIKED":
-            console.log("edit liked reducer reached", action.payload);
+            
             return {
                 ...state,
                 currentUserData: {
                     ...state.currentUserData,
                     tweets: [...state.currentUserData.tweets.map((tweet, index) => {
-                        console.log(`index ,tweet`, index, tweet);
+                        
                         if (tweet.id == action.payload) {
                             console.log(`MATCH tweet`, tweet);
                             return {
@@ -68,9 +68,9 @@ export default (state = INITIAL_STATE, action) => {
                 currentUserData: {
                     ...state.currentUserData,
                     tweets: [...state.currentUserData.tweets.filter((tweet, index) => {
-                        console.log(`index ,tweet`, index, tweet);
+                        
                         if (tweet.id !== action.payload) {
-                            console.log(`MATCH tweet`, tweet);
+                            
                             return tweet
                         } 
                     })

@@ -26,7 +26,7 @@ const App = () => {
             <NewTweet />
             <Routes>
                     <Route path="/:username"  element={<Tweets getMe={setCurrentTweet}  />} />
-                    <Route path="/:username/:id" exact element={<SingleTweet getMe={currentTweet}  />} />
+                    <Route path="/:username/:id" exact element={<SingleTweet  getMe={currentTweet}  />} />
                     <Route path="/"  element={<Tweets getMe={setCurrentTweet}  />} />
                   </Routes>
             {/* <Tweets /> */}

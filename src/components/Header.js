@@ -6,7 +6,6 @@ const Header = () => {
     return (
         <div>
             <Icon disabled size='huge' name='twitter square' />
-            
         </div>
     )
 }
