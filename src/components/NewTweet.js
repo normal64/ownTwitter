@@ -45,7 +45,7 @@ const NewTweet = (props) => {
     }
     return (
             <form className="ui form error clearing segment" 
-            onSubmit={props.handleSubmit(onSubmit)}
+             onSubmit={props.handleSubmit(onSubmit)}
             >
             <Field name="tweet" component={renderInput} label="Enter tweet"/>
             <button className="ui button blue right floated">Tweet</button>

@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
 import GoogleAuth from "../src/components/GoogleAuth";
+import TempRegistration from "./components/TempRegistration"
 import UserHeader from "./components/UserHeader";
 import SingleTweet from "./components/SingleTweet";
+
 
 import UserDescriptionBox from "../src/components/UserDescriptionBox";
 import Followers from "./components/Followers";
@@ -11,6 +13,7 @@ import "./styles/Tweets.scss"
 
 import NewTweet from "./components/NewTweet";
 import { BrowserRouter, Route,Routes, Switch, Link } from 'react-router-dom';
+import RegistrationForm from './components/RegistrationForm';
 
 
 const App = () => {
@@ -20,11 +23,13 @@ const App = () => {
             <BrowserRouter>
             <Header /> 
             <GoogleAuth /> 
+            <TempRegistration /> 
             <UserHeader />
             <UserDescriptionBox />
             <Followers />
             <NewTweet />
             <Routes>
+                    <Route path="/registration"  element={<RegistrationForm   />} />
                     <Route path="/:username"  element={<Tweets getMe={setCurrentTweet}  />} />
                     <Route path="/:username/:id" exact element={<SingleTweet  getMe={currentTweet}  />} />
                     <Route path="/"  element={<Tweets getMe={setCurrentTweet}  />} />
