@@ -29,7 +29,7 @@ export default (state = INITIAL_STATE, action) => {
                     ...state.currentUserData,
                     tweets: [
                         {
-                            "id": state.currentUserData.tweets[0].id + 1,
+                            "id": state.currentUserData.tweets[0] ? state.currentUserData.tweets[0].id + 1 : 0,
                             "content": action.payload ,
                             "comments": 0,
                             "retweet": 0,
