@@ -77,6 +77,35 @@ export default (state = INITIAL_STATE, action) => {
                     ]
                 }
             }
+        case "CREATE_USER":
+            console.log("create user reducer reached", action.payload);
+            return{
+                ...state,
+                isSignedIn: true,
+                userId: `${action.payload.userId}`,
+                currentUserData: {
+                    "id":  `id${action.payload.userId}`,
+                    "userId": `${action.payload.userId}`,
+                    "title": "huilo",
+                    "author": "pidaras",
+                    "avatarURL": `${action.payload.avatarURL}`,
+                    "username": `${action.payload.username}`,
+                    "userurl": `${action.payload.userurl}`,
+                    "userDescription": `${action.payload.userDescription}`,
+                    "location": `${action.payload.location}`,
+                    "occupation": `${action.payload.occupation}`,
+                    "registrationDate": "09.12.2005",
+                    "following": 16,
+                    "followers": 45,
+                    "tweets":   [
+
+                    ]
+                
+                }
+
+
+            }
+
 
         default:
             return state

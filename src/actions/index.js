@@ -55,3 +55,14 @@ export const fetchTweet = (userId) => async (dispatch) =>{
     })
 
 }
+export const createUser = (data) => async(dispatch,getState) =>{
+    console.log(`create user action creator reached`,data);
+    dispatch({
+        type:"CREATE_USER",
+        payload: data
+    })
+    const currentUserData = getState().authReducer.currentUserData;
+    console.log(`currentUserData editLiked action reducer`, currentUserData);
+    await tweets.post(`/users`,currentUserData )
+    
+}

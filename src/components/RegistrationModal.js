@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
 import { useDispatch } from "react-redux";
-import {newTweet} from '../actions/index';
+import {createUser} from '../actions/index';
 import {useSelector} from "react-redux" ;
 
 const renderError = ({error, touched}) =>{
@@ -41,8 +41,9 @@ const RegistrationModal = props =>{
 
     const onSubmit = (formValues) =>{
         console.log("on submit happens",formValues,props);
-        dispatch(newTweet(userId,formValues))
-        formValues.tweet = ""
+        dispatch(createUser(formValues))
+        
+        navigate('/')
         // props.onSubmit(formValues)
     }
 
