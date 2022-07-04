@@ -3,6 +3,7 @@ import GoogleAuth from "../src/components/GoogleAuth";
 import TempRegistration from "./components/TempRegistration"
 import UserHeader from "./components/UserHeader";
 import SingleTweet from "./components/SingleTweet";
+import EnterTempAcc from "./components/EnterTempAcc";
 
 
 import UserDescriptionBox from "../src/components/UserDescriptionBox";
@@ -24,6 +25,7 @@ const App = () => {
             <Header /> 
             <GoogleAuth /> 
             <TempRegistration /> 
+            <EnterTempAcc />
             <UserHeader />
             <UserDescriptionBox />
             <Followers />

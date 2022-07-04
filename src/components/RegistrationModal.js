@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import {createUser} from '../actions/index';
 import {useSelector} from "react-redux" ;
 
+
+
 const renderError = ({error, touched}) =>{
     if(touched && error){
         return(
@@ -37,13 +39,16 @@ const RegistrationModal = props =>{
     const dispatch = useDispatch();
     const userId = useSelector(state => state.authReducer.userId);
     const navigate = useNavigate();
+    const currentUserData = useSelector(
+        (state) => state.authReducer.currentUserData
+      );
     
 
     const onSubmit = (formValues) =>{
         console.log("on submit happens",formValues,props);
+        console.log(`currentUserData`, currentUserData);
         dispatch(createUser(formValues))
-        
-        navigate('/')
+        navigate(`/${currentUserData.userurl}`)
         // props.onSubmit(formValues)
     }
 
