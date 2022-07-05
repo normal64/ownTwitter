@@ -1,5 +1,17 @@
 .enter-temp-form{
-    max-width: 42em !important;
+    max-width: 30em !important;
+    max-height: 4em !important;
     position: absolute !important;
+    background-color: #fbd586 !important;
     top: 3em !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .button{
+        max-height: 4em;
+    }
+    input{
+        max-width: 8em;
+    max-height: 1em !important;
+    }
 }

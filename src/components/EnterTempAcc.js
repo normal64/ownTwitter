@@ -10,6 +10,9 @@ import "../styles/EnterTempAcc.scss"
 const EnterTempAcc = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const currentUserData = useSelector(
+        (state) => state.authReducer.currentUserData
+      );
     
     const renderError = ({error, touched}) =>{
         if(touched && error){
@@ -26,10 +29,7 @@ const EnterTempAcc = (props) => {
         console.log("on submit happens",formValues,props);
         dispatch(signIn(formValues.userId))
         dispatch(fetchTweet(formValues.userId))
-        // console.log(`currentUserData`, currentUserData);
-        // dispatch(createUser(formValues))
-        // navigate(`/${currentUserData.userurl}`)
-        // props.onSubmit(formValues)
+        navigate(`/${currentUserData.userurl}`)
     }
     const renderInput  = ({input,label, meta}) =>{
         console.log("input", input);
@@ -58,7 +58,7 @@ const EnterTempAcc = (props) => {
                     className="ui brown google button"
                     // onClick={onTempRegistrationClick}
                 >
-                    <i className="thumbtack icon"></i>Enter temporary account
+                   Enter
             </button>
             </form>
             
