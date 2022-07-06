@@ -64,7 +64,7 @@ const RegistrationModal = props =>{
             <Field name="userurl" component={renderInput} label="Enter userURL"/>
             <Field name="avatarURL" component={renderInput} label="Enter link to your profile picture"/>
             <Field name="userDescription" component={renderInput} label="Write about yourself"/>
-            <Field name="location" component={renderInput} label="Write about yourself"/>
+            <Field name="location" component={renderInput} label="Enter your location"/>
             <Field name="occupation" component={renderInput} label="Enter your occupation"/>
             
             <button className="ui button blue right floated">Create</button>
