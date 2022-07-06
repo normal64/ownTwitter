@@ -3,15 +3,20 @@
     max-height: 3.8em !important;
     position: absolute !important;
     background-color: #fbd586 !important;
-    top: 3.4em !important;
+    margin-left: 22em !important;
     display: flex;
     flex-direction: row;
     align-items: center;
     .button{
-        max-height: 4em;
+        max-height: 3em;
     }
     input{
         max-width: 8em;
-    max-height: 1em !important;
+    max-height: 0.9em !important;
+    margin: 0 !important;
+    }
+    label{
+        margin: 0 !important;
+        font-size: 11px !important;
     }
 }
