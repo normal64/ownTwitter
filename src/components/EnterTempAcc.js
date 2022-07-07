@@ -53,7 +53,7 @@ const EnterTempAcc = (props) => {
                <form className="ui form error clearing segment enter-temp-form" 
             onSubmit={props.handleSubmit(onSubmit)}
             >
-            <Field name="userId" component={renderInput} label="Enter desired user ID"/>
+            <Field name="userId" component={renderInput} label="Enter user ID"/>
             <button
                     className="ui brown google button"
                     // onClick={onTempRegistrationClick}
